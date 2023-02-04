@@ -38,5 +38,61 @@ public class Book {
 
     public Book() {
     }
-}
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+}
