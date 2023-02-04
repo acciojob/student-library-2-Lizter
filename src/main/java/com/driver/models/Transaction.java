@@ -16,13 +16,26 @@ public class Transaction {
 
     private String transactionId = UUID.randomUUID().toString(); // externalId
 
-    public int getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnoreProperties("books")
+    private Card card;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnoreProperties("transactions")
+    private Book book;
+
+    private int fineAmount;
+
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isIssueOperation;
+
+    @Enumerated(value = EnumType.STRING)
+    private TransactionStatus transactionStatus;
+
+    @CreationTimestamp
+    private Date transactionDate;
 
     public String getTransactionId() {
         return transactionId;
@@ -30,14 +43,6 @@ public class Transaction {
 
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
     }
 
     public Book getBook() {
@@ -72,6 +77,22 @@ public class Transaction {
         this.transactionStatus = transactionStatus;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
     public Date getTransactionDate() {
         return transactionDate;
     }
@@ -79,25 +100,4 @@ public class Transaction {
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
     }
-
-    @ManyToOne
-    @JoinColumn
-    @JsonIgnoreProperties("books")  //used at class level to mark a property or list of properties to be ignored.
-    private Card card;
-
-    @ManyToOne
-    @JoinColumn
-    @JsonIgnoreProperties("transactions")
-    private Book book;
-
-    private int fineAmount;
-
-    @Column(columnDefinition = "TINYINT(1)")    //TINYINT takes 1 byte that means it has range -128 to +127 while int takes 4 bytes; it has range -2147483648 to +2147483647.
-    private boolean isIssueOperation;
-
-    @Enumerated(value = EnumType.STRING)
-    private TransactionStatus transactionStatus;
-
-    @CreationTimestamp
-    private Date transactionDate;
 }
