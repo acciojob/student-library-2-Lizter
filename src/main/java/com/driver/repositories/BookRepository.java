@@ -31,4 +31,3 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     int updateBook(Book book);
 
 }
-
