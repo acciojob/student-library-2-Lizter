@@ -44,9 +44,7 @@ public class BookService {
 
     //This has to be rectified....and given a thought
 
-    public List<Book> getBooks(Genre genre, boolean available, String author){
-
-
+    public List<Book> getBooks(String genre, boolean available, String author){
         if(genre != null && author != null){
             return bookRepository2.findBooksByGenreAuthor(genre, author, available);
         }else if(genre != null){
