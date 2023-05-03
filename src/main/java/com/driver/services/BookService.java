@@ -31,18 +31,16 @@ public class BookService {
         //Update the bookList written by Author
         author.getBooksWritten().add(book);
 
-        //Updated the book
+        //Update the book
         book.setAuthor(author);
         //bookRepository2.save(book);
         bookRepository2.save(book);
 
         authorRepository1.save(author);
 
-
-
     }
 
-    //This has to be rectified....and given a thought
+
 
     public List<Book> getBooks(String genre, boolean available, String author){
         if(genre != null && author != null){

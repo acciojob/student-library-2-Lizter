@@ -16,7 +16,7 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @PostMapping("/")
+    @PostMapping("/createBook")
     public ResponseEntity createBook(@RequestBody Book book){
         bookService.createBook(book);
         return new ResponseEntity<>("the book is added successfully", HttpStatus.CREATED);
